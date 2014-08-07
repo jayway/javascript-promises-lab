@@ -3,8 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Javascript Promises Lab</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="lab.js"></script>
   </head>
   <body>
+    <div style="margin: 0 auto; text-align: center; margin: 10px;">
+      <button type="button" class="btn btn-success" onclick="lab.function1()">Function 1</button>
+      <button type="button" class="btn btn-success" onclick="lab.function2()">Function 2</button>
+      <button type="button" class="btn btn-success" onclick="lab.function3()">Function 3</button>
+      <button type="button" class="btn btn-success" onclick="lab.function4()">Function 4</button>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button type="button" class="btn btn-info" onclick="lab.showImage(1)">Expected 1</button>
+      <button type="button" class="btn btn-info" onclick="lab.showImage(2)">Expected 2</button>
+      <button type="button" class="btn btn-info" onclick="lab.showImage(3)">Expected 3</button>
+      <button type="button" class="btn btn-info" onclick="lab.showImage(4)">Expected 4</button>
+    </div>
+    <div id="result" style="margin: 0 auto; text-align: center;"></div>
   </body>
 </html>

@@ -24,49 +24,63 @@ var lab = (function() {
   // =====================
   
   // Convert this function to return a Promise.
-  // The promise should Resolve or Reject (with the appropriate data) based on the request response.
+  // The promise should resolve or reject based on the response from the server.
   var get = function (url) {
-    var req = new XMLHttpRequest();
-    req.open("GET", url);
+    return new Promise(function(resolve, reject) {
+      var req = new XMLHttpRequest();
+      req.open("GET", url);
 
-    req.onload = function() {
-      if (req.status === 200) {
-        // OK
-      } else {
-        // Fail
-      }
-    };
+      req.onload = function() {
+        if (req.status === 200) {
+          resolve(req.response);
+        } else {
+          reject(Error(req.statusText));
+        }
+      };
 
-    req.onerror = function() {
-      // Fail
-    };
+      req.onerror = function() {
+        reject(Error("Network Error"));
+      };
 
-    req.send();
+      req.send();
+    });
   };
   
-  // All functions below should use the get-function with its Promise!
+  
   
   // Fetch all chapters (in parallell) and add them to the page as soon as possible.
-  // The chapters will (very likely) be added out of order.
+  // The chapters will be added out of order.
   var function1 = function() {
-    // TODO Implement me!
+    chapterURL.map(get).forEach(function (promise) {
+      promise.then(addToPage);
+    });
   };
   
-  // Fetch one chapter, add it to the page, then fetch the next chapter.
+  // Fetch a chapter, add it to the page, then fetch the next chapter.
   // This will add all chapters in order but no parallel requests will be made.
   var function2 = function() {
-    // TODO Implement me!
+    chapterURL.reduce(function (acc, url) {
+      return acc.then(function () {
+        return get(url);
+      }).then(addToPage);
+    }, Promise.resolve());
   };
   
-  // Fetch all chapters in parallel and wait until all of them has been fetched - then add them to the page.
+  // Fetch all chapters in parallel but wait until all of them has finished and then add them to the page.
   // This will add all chapters in the correct order, but not until all of them has been fetched.
   var function3 = function() {
-    // TODO Implement me!
+    Promise.all(chapterURL.map(get)).then(function (chapterTexts) {
+      chapterTexts.forEach(addToPage);
+    });
   };
   
   // Fetch all chapters in parallel and add them to the page in the correct order as soon as possible.
   var function4 = function() {
-    // TODO Implement me!
+    chapterURL.map(get).reduce(function (acc, promise) {
+      return acc.then(function () {
+        return promise;
+      }).then(addToPage);
+    }, Promise.resolve());
   };
   
   // ===================
