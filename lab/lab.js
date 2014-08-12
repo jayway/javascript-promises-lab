@@ -1,18 +1,20 @@
 var lab = (function() {
   "use strict";
-  
-  var baseURL = "http://localhost:3000/chapter/",
+
+  var unstableURLs = false,  // Setting this to true will make the server randomly respond with an 500 error.
+      baseURL = "http://localhost:3000/chapter/",
+      appendURL = unstableURLs ? "/unstable" : "",
       chapterURL = [
-        baseURL + "1",
-        baseURL + "2",
-        baseURL + "3",
-        baseURL + "4",
-        baseURL + "5",
-        baseURL + "6",
-        baseURL + "7",
-        baseURL + "8",
-        baseURL + "9",
-        baseURL + "10"
+        baseURL + "1" + appendURL,
+        baseURL + "2" + appendURL,
+        baseURL + "3" + appendURL,
+        baseURL + "4" + appendURL,
+        baseURL + "5" + appendURL,
+        baseURL + "6" + appendURL,
+        baseURL + "7" + appendURL,
+        baseURL + "8" + appendURL,
+        baseURL + "9" + appendURL,
+        baseURL + "10" + appendURL
     ];
   
   var addToPage = function (chapterText) {
@@ -48,24 +50,24 @@ var lab = (function() {
   
   // Fetch all chapters (in parallell) and add them to the page as soon as possible.
   // The chapters will (very likely) be added out of order.
-  var function1 = function() {
+  var function1 = function () {
     // TODO Implement me!
   };
   
   // Fetch one chapter, add it to the page, then fetch the next chapter.
   // This will add all chapters in order but no parallel requests will be made.
-  var function2 = function() {
+  var function2 = function () {
     // TODO Implement me!
   };
   
   // Fetch all chapters in parallel and wait until all of them has been fetched - then add them to the page.
   // This will add all chapters in the correct order, but not until all of them has been fetched.
-  var function3 = function() {
+  var function3 = function () {
     // TODO Implement me!
   };
   
   // Fetch all chapters in parallel and add them to the page in the correct order as soon as possible.
-  var function4 = function() {
+  var function4 = function () {
     // TODO Implement me!
   };
   
@@ -79,22 +81,22 @@ var lab = (function() {
   };
   
   return {
-    function1: function() {
+    function1: function () {
       $("#result").empty();
       function1();
     },
     
-    function2: function() {
+    function2: function () {
       $("#result").empty();
       function2();
     },
     
-    function3: function() {
+    function3: function () {
       $("#result").empty();
       function3();
     },
     
-    function4: function() {
+    function4: function () {
       $("#result").empty();
       function4();
     },
