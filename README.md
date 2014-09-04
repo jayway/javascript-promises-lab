@@ -1,5 +1,7 @@
 Javascript Promises Lab
 =======================
+[Promise documentation on Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). 
+
 This lab requires Node.JS and NPM.
 
 Install dependencies by running:
